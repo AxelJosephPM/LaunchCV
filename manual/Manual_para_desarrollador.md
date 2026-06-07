@@ -61,7 +61,7 @@ LaunchCV/
 │   │   ├── profileStore.js      ← Read/write profile and config JSON
 │   │   ├── cvGenerator.js       ← Render HTML CVs, expose FORMAT_MAP
 │   │   ├── pdfGenerator.js      ← PDF via Electron printToPDF (hidden window)
-│   │   ├── webGenerator.js      ← Render Web Card, copy assets to output/Web/
+│   │   ├── webGenerator.js      ← Render public landing page, copy assets/PDFs/vCard to output/Web/
 │   │   ├── qrGenerator.js       ← QR code PNG (qrcode npm package)
 │   │   ├── vcardGenerator.js    ← .vcf contact file
 │   │   ├── assetService.js      ← Asset detection, copying, base64 encoding
@@ -178,7 +178,7 @@ The PDF window is not user-facing and handles no user input. It exists only to r
 
 `copyToWebOutput(webDir)`:
 - Copies both asset files to `webDir/assets/`.
-- Used by `webGenerator.js` so the Web Card can reference images via relative paths.
+- Used by `webGenerator.js` so the Web Card landing page can reference images via relative paths.
 
 ---
 
@@ -285,15 +285,18 @@ Before packaging:
 ## GitHub Pages Deployment for the Web Card
 
 LaunchCV uses the `docs/` folder as the GitHub Pages publishing source on the `master` branch.
+The generated Web Card is a static public landing page: `index.html` is the main page and `card.html` redirects to it for QR compatibility.
+It includes the digital profile, grouped CV downloads, project cards, contact buttons, and the public vCard link.
 
 ### Automated flow (recommended)
 
 1. In the app, go to **Web & QR** and confirm the **Public URL** is correct.
 2. Click **🌐 Prepare GitHub Pages Website**. This:
    - Regenerates `output/Web/` from the current profile.
-   - Copies it to `docs/` (index.html, card.html, assets/).
+   - Copies it to `docs/` (index.html, card.html, assets/, Contact/).
    - Copies CV PDFs to `docs/assets/cv/` with sanitized (accent-free) filenames.
-   - Patches `docs/card.html` so download links point to those PDFs.
+   - Keeps download links relative, for example `assets/cv/Pablo_Codon_Castellano_CV_Harvard.pdf`.
+   - Creates a privacy-aware public `.vcf` in `Contact/`.
    - Writes `docs/.nojekyll` to prevent Jekyll from breaking underscore paths.
 3. Commit and push `docs/` to the repository.
 4. First time only: enable GitHub Pages in GitHub:
@@ -313,7 +316,9 @@ npm run pages:generate
 
 ### Implemented in
 
-- `app/services/pagesPublisher.js` — core copy/patch logic
+- `app/services/pagesPublisher.js` — copies generated static files to `docs/`
+- `app/templates/web/index.html` — full landing page template
+- `app/templates/web/card.html` — redirect template for QR compatibility
 - `scripts/publish-web-to-docs.js` — backing script for `npm run pages:prepare`
 - `scripts/generate-and-publish.js` — backing script for `npm run pages:generate`
 - `app/main.js` — IPC: `pages:prepare`, `pages:open-docs`

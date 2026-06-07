@@ -1,29 +1,16 @@
 // Copies output/Web/ to docs/ for GitHub Pages deployment.
-// Also copies CV PDFs (sanitized filenames) to docs/assets/cv/
-// and patches docs/card.html download links to use those PDFs.
+// Also copies CV PDFs and vCards with sanitized filenames so the static landing
+// page uses GitHub Pages-compatible relative links.
 
 const path = require('path');
 const fs   = require('fs');
 
 const outputWebDir     = path.join(__dirname, '..', '..', 'output', 'Web');
 const outputPdfDir     = path.join(__dirname, '..', '..', 'output', 'PDF');
-const outputContactDir = path.join(__dirname, '..', '..', 'output', 'Contact');
 const docsDir          = path.join(__dirname, '..', '..', 'docs');
 
 // Files/dirs that this publisher owns (safe to clear before re-publishing).
 const MANAGED_ENTRIES = ['index.html', 'card.html', 'assets', 'Contact', '.nojekyll'];
-
-// Map from PDF filename suffix to human-readable download label.
-const PDF_LABELS = {
-  '_CV_Harvard.pdf':           'Harvard CV',
-  '_CV_ATS.pdf':               'ATS CV',
-  '_CV_Modern.pdf':            'Modern CV',
-  '_CV_European.pdf':          'European CV',
-  '_CV_Academic.pdf':          'Academic CV',
-  '_CV_OnePage.pdf':           'One-Page CV',
-  '_CV_PhotoSidebar.pdf':      'Photo Sidebar CV',
-  '_Resume_International.pdf': 'International Resume',
-};
 
 // Strip combining diacritics and replace non-URL-safe characters.
 function sanitize(name) {
@@ -31,13 +18,6 @@ function sanitize(name) {
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
     .replace(/[^\w.\-]/g, '_');
-}
-
-function getPdfLabel(filename) {
-  for (const [suffix, label] of Object.entries(PDF_LABELS)) {
-    if (filename.endsWith(suffix)) return label;
-  }
-  return filename.replace(/\.pdf$/i, '').replace(/_/g, ' ');
 }
 
 function copyDir(src, dest) {
@@ -99,46 +79,16 @@ async function publish(profile, config) {
       if (!file.endsWith('.pdf')) continue;
       const san = sanitize(file);
       fs.copyFileSync(path.join(outputPdfDir, file), path.join(cvDestDir, san));
-      copiedPdfs.push({ original: file, sanitized: san, label: getPdfLabel(san) });
+      copiedPdfs.push({ original: file, sanitized: san });
     }
   }
 
-  // Copy Contact directory (vCard .vcf) with sanitized filenames
   const copiedContacts = [];
-  if (fs.existsSync(outputContactDir)) {
-    const contactDest = path.join(docsDir, 'Contact');
-    fs.mkdirSync(contactDest, { recursive: true });
-    for (const file of fs.readdirSync(outputContactDir)) {
-      const san = sanitize(file);
-      fs.copyFileSync(path.join(outputContactDir, file), path.join(contactDest, san));
-      copiedContacts.push({ original: file, sanitized: san });
+  const contactDest = path.join(docsDir, 'Contact');
+  if (fs.existsSync(contactDest)) {
+    for (const file of fs.readdirSync(contactDest)) {
+      if (file.toLowerCase().endsWith('.vcf')) copiedContacts.push({ original: file, sanitized: file });
     }
-  }
-
-  // Patch docs/card.html
-  const cardPath = path.join(docsDir, 'card.html');
-  if (fs.existsSync(cardPath)) {
-    let html = fs.readFileSync(cardPath, 'utf8');
-
-    // Replace the Download CV btn-group with links to the sanitized PDF copies.
-    if (copiedPdfs.length) {
-      const linksHtml = copiedPdfs
-        .map(({ sanitized, label }) =>
-          `<a href="assets/cv/${sanitized}" class="card-btn" download>&#11015; ${label}</a>`)
-        .join('\n    ');
-
-      html = html.replace(
-        /(<div class="section-label">Download CV<\/div>\s*<div class="btn-group">)([\s\S]*?)(<\/div>\s*<p class="placeholder-note">)More formats coming soon\.(<\/p>)/,
-        `$1\n    ${linksHtml}\n  $3PDF downloads available.$4`
-      );
-    }
-
-    // Fix vCard href to use the sanitized filename.
-    for (const { original, sanitized } of copiedContacts) {
-      html = html.split(`href="Contact/${original}"`).join(`href="Contact/${sanitized}"`);
-    }
-
-    fs.writeFileSync(cardPath, html, 'utf8');
   }
 
   return { docsDir, copiedPdfs, copiedContacts };

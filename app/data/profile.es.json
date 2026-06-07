@@ -15,7 +15,8 @@
     "linkedin": "https://www.linkedin.com/in/pablo-cod%C3%B3n-castellano-84456b226/",
     "github": "https://github.com/pablocodoncastellano",
     "website": "",
-    "status": "En búsqueda activa"
+    "status": "En búsqueda activa",
+    "tagline": "Estudiante de Ingeniería Aeroespacial enfocado en sistemas espaciales, aviónica, integración de sistemas de potencia y proyectos aeroespaciales estudiantiles."
   },
   "summary": "Estudiante de Ingeniería Aeroespacial en la Universidad Rey Juan Carlos con experiencia en proyectos de satélites estudiantes, integración de aviónica y sistemas de potencia, y representación estudiantil. Interesado en ingeniería de sistemas espaciales, aviónica, sistemas de potencia eléctrica y coordinación de proyectos técnicos.",
   "education": [
@@ -114,8 +115,16 @@
       "role": "Integración de Aviónica y Sistemas de Potencia",
       "organization": "Cosmos Aerospace Association",
       "date": "Septiembre 2024 – Presente",
-      "description": "Proyecto de microsatélite desarrollado por estudiantes, centrado en las primeras etapas de la ingeniería de sistemas espaciales e integración de subsistemas.\nLideró el equipo de integración de aviónica y sistemas de potencia, coordinando interfaces de sistemas eléctricos y embebidos.\nContribuyó a la documentación de subsistemas, estudios de trade y planificación de integración en un equipo estudiantil multidisciplinar.",
-      "url": ""
+      "description": "Proyecto de satélite estudiantil desarrollado dentro de Cosmos Aerospace Association, centrado en las primeras etapas de ingeniería de sistemas espaciales e integración de subsistemas.",
+      "url": "",
+      "tags": [
+        "CubeSat",
+        "Satélite estudiantil",
+        "Aviónica",
+        "Sistemas de potencia",
+        "Ingeniería de sistemas",
+        "Documentación técnica"
+      ]
     }
   ],
   "links": {

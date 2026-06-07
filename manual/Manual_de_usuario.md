@@ -12,7 +12,7 @@ Sin necesidad de Word, sin formularios en línea, sin perder el formato.
 Con LaunchCV puedes:
 - Editar tu perfil profesional en formularios visuales.
 - Generar tu CV en varios formatos (Harvard, ATS, Moderno y más).
-- Crear tu tarjeta digital Web Card para compartir con un código QR.
+- Crear una Web Card pública tipo landing page para compartir con un código QR.
 - Generar un archivo de contacto (.vcf) para que te añadan fácilmente a la agenda.
 - Guardar copias de seguridad de toda tu información.
 
@@ -78,8 +78,8 @@ Para eliminar una entrada, pulsa la **✕** en la esquina derecha de esa tarjeta
 
 ## Añadir proyectos
 
-La sección de proyectos se añadirá en una versión futura.
-Por ahora puedes incluir proyectos relevantes dentro de la sección Experience.
+Los proyectos relevantes pueden guardarse en el perfil y aparecen en la Web Card pública si **Show Projects** está activado en Privacy.
+Cada proyecto puede incluir nombre, rol, organización, descripción, enlace y etiquetas técnicas.
 
 ---
 
@@ -142,21 +142,23 @@ Puedes abrir cualquiera de estos archivos directamente en tu navegador para revi
 
 ## Cómo funciona la Web Card
 
-La Web Card es una página web con tu perfil profesional.
+La Web Card es una landing page pública con tu perfil profesional.
 Se genera en la carpeta `output/Web/` y contiene:
 
-- Tu nombre y titular.
-- Un breve resumen profesional.
-- Botones para descargar tus CVs en PDF.
-- Un botón para añadirte como contacto.
+- Perfil digital con foto, nombre, titular, localización y estado profesional.
+- Resumen profesional y experiencia destacada.
+- Proyectos relevantes como mini portfolio.
+- Botones de contacto para LinkedIn, GitHub, email si está permitido y guardar contacto.
+- Centro de descarga de CVs en PDF agrupado por uso: recomendado/general, portales de empleo, visual sharing y académico/internacional.
 
 Para que sea accesible desde el QR, se publica en GitHub Pages desde la carpeta `docs/`.
+La página principal es `index.html`; `card.html` redirige a `index.html` para mantener compatibilidad con QRs antiguos.
 
 ### Publicar en GitHub Pages
 
 1. Ve a **Web & QR** y comprueba la URL pública (`https://axeljosephpm.github.io/LaunchCV/`).
 2. Pulsa **🌐 Prepare GitHub Pages Website**.
-   La app regenera la Web Card y la copia a `docs/` con los PDFs.
+   La app regenera la landing page y la copia a `docs/` con los PDFs y el contacto público `.vcf`.
 3. El desarrollador hace `git push` para publicar los cambios.
 4. La primera vez, activa GitHub Pages en GitHub:
    **Settings → Pages → master → /docs → Save**
@@ -190,6 +192,7 @@ En **Privacy** puedes decidir qué datos aparecen en tu Web Card pública:
 - Mostrar / ocultar sección de experiencia.
 
 Pulsa **Save Privacy Settings** tras ajustar los interruptores.
+El archivo público `.vcf` que se publica con la Web Card sigue estos mismos ajustes para email, teléfono, dirección, LinkedIn y GitHub.
 
 ---
 

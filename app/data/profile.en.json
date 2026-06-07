@@ -15,7 +15,8 @@
     "linkedin": "https://www.linkedin.com/in/pablo-cod%C3%B3n-castellano-84456b226/",
     "github": "https://github.com/pablocodoncastellano",
     "website": "",
-    "status": "Open to work"
+    "status": "Open to work",
+    "tagline": "Student in Aerospace Engineering focused on space systems, avionics, power systems integration and student-led aerospace projects."
   },
   "summary": "Aerospace Engineering student at Universidad Rey Juan Carlos with experience in student satellite projects, avionics and power systems integration, and student representation. Interested in space systems engineering, avionics, electrical power systems, and technical project coordination.",
   "education": [
@@ -120,12 +121,20 @@
   "projects": [
     {
       "id": "project_1",
-      "name": "S-ART Student Satellite",
+      "name": "S-ART Student Satellite Project",
       "role": "Avionics and Power Systems Integration",
       "organization": "Cosmos Aerospace Association",
       "date": "September 2024 – Present",
-      "description": "Student-developed microsatellite project focused on early-stage space systems engineering and subsystem integration.\nLed the avionics and power systems integration team, coordinating electrical and embedded systems interfaces.\nContributed to subsystem documentation, trade studies, and integration planning within a multidisciplinary student team.",
-      "url": ""
+      "description": "Student satellite project developed within Cosmos Aerospace Association, focused on early-stage space systems engineering and subsystem integration.",
+      "url": "",
+      "tags": [
+        "CubeSat",
+        "Student Satellite",
+        "Avionics",
+        "Power Systems",
+        "Systems Engineering",
+        "Technical Documentation"
+      ]
     }
   ],
   "links": {

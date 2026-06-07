@@ -71,12 +71,15 @@ Si los archivos no están, la app funciona con normalidad pero sin foto ni logot
 
 ---
 
-## 7. Generar la Web Card y el código QR
+## 7. Generar la Web Card landing page y el código QR
 
 1. Antes de generar, ve a **Web & QR** y comprueba la URL pública configurada.
    La URL temporal es: `https://axeljosephpm.github.io/LaunchCV/`
 2. Vuelve a **Generate** y pulsa **Generate Web Card** y **Generate QR Code**.
 3. Los archivos de la Web Card se guardan en `output/Web/` junto con las imágenes en `output/Web/assets/`.
+4. Abre `output/Web/index.html` para revisar la landing page localmente.
+
+La Web Card pública muestra el perfil digital, la foto, el resumen profesional, experiencia destacada, proyectos, botones de contacto, descarga de CVs agrupada por uso y botón para guardar el contacto.
 
 ---
 
@@ -87,8 +90,8 @@ Para publicar la Web Card en internet usando GitHub Pages:
 1. Ve a **Web & QR**.
 2. Comprueba que la **URL pública** está configurada correctamente.
 3. Pulsa **🌐 Prepare GitHub Pages Website**.
-   - La app regenera la Web Card y la copia a la carpeta `docs/` del repositorio.
-   - También copia los PDFs de los CVs con nombres de archivo seguros para la web.
+   - La app regenera la landing page y la copia a la carpeta `docs/` del repositorio.
+   - También copia los PDFs de los CVs con nombres de archivo seguros para la web y el contacto público `.vcf`.
 4. El desarrollador (Axel) debe hacer `git commit` y `git push` de la carpeta `docs/`.
 5. La primera vez, activa GitHub Pages en el repositorio:
    **Settings → Pages → master → /docs → Save**

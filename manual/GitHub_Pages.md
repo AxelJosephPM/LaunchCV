@@ -1,6 +1,6 @@
 # LaunchCV — GitHub Pages Publishing Guide
 
-This guide explains how to publish Pablo's Web Card on GitHub Pages using the `docs/` folder,
+This guide explains how to publish Pablo's public landing page / Web Card on GitHub Pages using the `docs/` folder,
 how the QR code works, and how Pablo can later take full ownership of the site.
 
 ---
@@ -18,16 +18,16 @@ cleaner and easier to manage.
 
 ---
 
-## Step 1 — Generate the Web Card
+## Step 1 — Generate the Web Card landing page
 
-Before publishing to GitHub Pages, you must generate the Web Card from within the app:
+Before publishing to GitHub Pages, generate the Web Card from within the app. The Web Card is now a public landing page that works as a digital profile, CV download center, mini portfolio, contact page, and QR target:
 
 1. Open LaunchCV.
 2. Fill in your profile data and make sure your photo and links are correct.
 3. Go to **Generate** → click **Generate Web Card**.
-4. The web card is created in `output/Web/`.
+4. The landing page is created in `output/Web/`.
 
-You can preview it in your browser by opening `output/Web/card.html` directly.
+You can preview it in your browser by opening `output/Web/index.html` directly. `output/Web/card.html` redirects to `index.html` so older QR targets still work.
 
 ---
 
@@ -38,8 +38,8 @@ You can preview it in your browser by opening `output/Web/card.html` directly.
    ```
    https://axeljosephpm.github.io/LaunchCV/
    ```
-3. Set the **QR Target Path** to `card.html`.
-   The QR code will point to: `https://axeljosephpm.github.io/LaunchCV/card.html`
+3. Recommended: leave the **QR Target Path** empty so the QR points to the base landing page.
+   You can also keep `card.html`; it redirects to `index.html`.
 4. Click **Save Web & QR Settings**.
 
 ---
@@ -48,11 +48,12 @@ You can preview it in your browser by opening `output/Web/card.html` directly.
 
 1. Still in **Web & QR**, click **🌐 Prepare GitHub Pages Website**.
 2. The app will:
-   - Regenerate a fresh Web Card.
-   - Copy it to `docs/index.html` and `docs/card.html`.
+   - Regenerate a fresh landing page.
+   - Copy it to `docs/index.html`.
+   - Copy a lightweight redirect to `docs/card.html`.
    - Copy your CV PDFs (with web-safe filenames) to `docs/assets/cv/`.
-   - Copy the vCard to `docs/Contact/`.
-   - Fix all download links in `docs/card.html` to point to the PDFs.
+   - Copy the public vCard to `docs/Contact/`.
+   - Keep all links relative for GitHub Pages.
    - Create a `docs/.nojekyll` file so GitHub Pages handles underscored filenames correctly.
 3. Open the `docs/` folder to verify the files are there.
 
@@ -98,12 +99,11 @@ GitHub Pages will detect the change and redeploy automatically.
 The QR code is generated from the URL:
 ```
 {publicUrl} + {qrTarget}
-= https://axeljosephpm.github.io/LaunchCV/ + card.html
-= https://axeljosephpm.github.io/LaunchCV/card.html
+= https://axeljosephpm.github.io/LaunchCV/ + optional target path
 ```
 
-The `docs/index.html` file already contains a redirect to `card.html`, so the QR can also
-point to just the base URL and it will redirect automatically.
+The recommended QR target is the base URL: `https://axeljosephpm.github.io/LaunchCV/`.
+If an older QR points to `card.html`, that page redirects to `index.html`.
 
 **Important:** If you change the Public URL after printing QR codes, the old printed QRs will
 still point to the old URL. For permanent QR codes, choose the final URL before printing.
@@ -117,8 +117,8 @@ After publishing, `docs/` looks like this:
 ```
 docs/
 ├── .nojekyll                    ← prevents Jekyll processing
-├── index.html                   ← redirects to card.html
-├── card.html                    ← the Web Card (main page)
+├── index.html                   ← public landing page / main QR target
+├── card.html                    ← redirect to index.html for old QR targets
 ├── assets/
 │   ├── pablo-profile.jpg
 │   ├── launchcv-logo.png
@@ -147,6 +147,8 @@ Before copying to `docs/`, the publisher respects your privacy settings:
 - Phone is only visible if **Show Phone** is enabled.
 - Photo is only shown if **Show Photo** is enabled.
 - CV PDFs are only included if **Show CV Download Buttons** is enabled.
+- Projects and experience are only shown if their privacy switches are enabled.
+- The public vCard follows the same email, phone, address, LinkedIn, and GitHub visibility rules.
 
 The following files are **never** copied to `docs/`:
 - `app/data/*.json` (profile data)
