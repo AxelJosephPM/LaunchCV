@@ -161,6 +161,8 @@
   }
   .cv-location, .cv-type { font-size: 8.5pt; color: var(--muted); }
   .cv-desc { font-size: 8.5pt; color: #444; margin-top: 3px; line-height: 1.5; }
+  .cv-desc-list { padding-left: 16px; margin-top: 3px; font-size: 8.5pt; color: #444; }
+  .cv-desc-list li { margin-bottom: 2px; line-height: 1.5; }
   .cv-empty { font-size: 8.5pt; color: #aaa; font-style: italic; }
 
   /* Footer */
@@ -187,7 +189,6 @@
 
   <!-- ── Sidebar ─────────────────────────────────────── -->
   <aside class="sidebar">
-    {{LOGO_IMG}}
     {{PHOTO_BLOCK}}
     <div class="sidebar-name">{{FULL_NAME}}</div>
     <div class="sidebar-headline">{{HEADLINE}}</div>
@@ -218,6 +219,7 @@
       <h3>Certifications</h3>
       {{CERTIFICATIONS_SIDEBAR}}
     </div>
+
   </aside>
 
   <!-- ── Main content ────────────────────────────────── -->

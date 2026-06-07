@@ -4,18 +4,23 @@ const fs = require('fs');
 const outputContact = path.join(__dirname, '..', '..', 'output', 'Contact');
 
 function generate(profile) {
-  const p = profile.personal || {};
+  const p     = profile.personal || {};
+  const links = profile.links    || {};
+  // Prefer profile.links (canonical source); fall back to personal fields.
+  const linkedinUrl = links.linkedin || p.linkedin || '';
+  const githubUrl   = links.github   || p.github   || '';
+  const websiteUrl  = links.portfolio || p.website  || '';
   const lines = [
     'BEGIN:VCARD',
     'VERSION:3.0',
     `FN:${p.firstName || ''} ${p.lastName || ''}`.trim(),
     `N:${p.lastName || ''};${p.firstName || ''};;;`,
-    p.headline ? `TITLE:${p.headline}` : '',
-    p.email    ? `EMAIL;TYPE=INTERNET:${p.email}` : '',
-    p.phone    ? `TEL;TYPE=CELL:${p.phone}` : '',
-    p.linkedin ? `URL;TYPE=LinkedIn:${p.linkedin}` : '',
-    p.github   ? `URL;TYPE=GitHub:${p.github}` : '',
-    p.website  ? `URL;TYPE=Website:${p.website}` : '',
+    p.headline   ? `TITLE:${p.headline}`                        : '',
+    p.email      ? `EMAIL;TYPE=INTERNET:${p.email}`             : '',
+    p.phone      ? `TEL;TYPE=CELL:${p.phone}`                   : '',
+    linkedinUrl  ? `URL;TYPE=LinkedIn:${linkedinUrl}`           : '',
+    githubUrl    ? `URL;TYPE=GitHub:${githubUrl}`               : '',
+    websiteUrl   ? `URL;TYPE=Website:${websiteUrl}`             : '',
     `NOTE:${(profile.summary || '').replace(/\r\n|\n/g, '\\n')}`,
     'END:VCARD'
   ].filter(Boolean);

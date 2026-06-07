@@ -7,22 +7,22 @@
     "firstName": "Pablo",
     "lastName": "Codón Castellano",
     "headline": "Aerospace Engineering Student",
-    "location": "Madrid, Comunidad de Madrid, España",
+    "location": "Madrid, Spain",
     "email": "",
     "phone": "",
     "address": "",
     "photo": "",
-    "linkedin": "",
-    "github": "",
+    "linkedin": "https://www.linkedin.com/in/pablo-cod%C3%B3n-castellano-84456b226/",
+    "github": "https://github.com/pablocodoncastellano",
     "website": "",
     "status": "Open to work"
   },
-  "summary": "Aerospace Engineering student at Universidad Rey Juan Carlos, with experience in aerospace student associations, student representation, and technical projects related to avionics and power systems integration.",
+  "summary": "Aerospace Engineering student at Universidad Rey Juan Carlos with experience in student satellite projects, avionics and power systems integration, and student representation. Interested in space systems engineering, avionics, electrical power systems, and technical project coordination.",
   "education": [
     {
       "id": "education_1",
       "institution": "Universidad Rey Juan Carlos",
-      "degree": "Bachelor's Degree in Aerospace, Aeronautical and Astronautical/Space Engineering",
+      "degree": "Bachelor's Degree in Aerospace Engineering",
       "field": "Aerospace Engineering",
       "startDate": "September 2022",
       "endDate": "May 2027",
@@ -43,42 +43,31 @@
   "experience": [
     {
       "id": "experience_1",
-      "title": "Avionics and Power System Integration Team Leader",
+      "title": "Avionics and Power Systems Integration Team Leader",
       "organization": "Cosmos Aerospace Association",
-      "type": "Part-time / Hybrid",
+      "type": "Part-time · Hybrid",
       "location": "Madrid, Spain",
       "startDate": "September 2024",
       "endDate": "Present",
-      "description": "Leader of the avionics and power systems integration team inside the S-ART student satellite project.",
+      "description": "Led the avionics and power systems integration team within the S-ART student satellite project.\nCoordinated subsystem interfaces, integration planning, and technical documentation across engineering teams.\nContributed to early mission definition and electrical power subsystem (EPS) trade studies.",
       "current": true
     },
     {
       "id": "experience_2",
-      "title": "Vocal URJC",
-      "organization": "Asociación de Estudiantes de Aeronáutica y Espacio - AEAE",
+      "title": "Vocal — URJC Representative",
+      "organization": "Asociación de Estudiantes de Aeronáutica y Espacio (AEAE)",
       "type": "Volunteer",
       "location": "Spain",
       "startDate": "March 2023",
       "endDate": "Present",
-      "description": "URJC representative in the Asociación de Estudiantes de Aeronáutica y Espacio.",
-      "current": true
-    },
-    {
-      "id": "experience_3",
-      "title": "Student",
-      "organization": "Universidad Rey Juan Carlos",
-      "type": "Full-time",
-      "location": "Madrid, Spain",
-      "startDate": "September 2022",
-      "endDate": "Present",
-      "description": "",
+      "description": "Represented Universidad Rey Juan Carlos in the national aerospace students' association (AEAE).\nCoordinated information exchange between the association and URJC students, and participated in national aerospace student events.",
       "current": true
     }
   ],
   "certifications": [
     {
       "id": "certifications_1",
-      "name": "Advanced English",
+      "name": "Cambridge English: Advanced (C1)",
       "issuer": "Cambridge English",
       "date": "February 2022",
       "credentialId": "",
@@ -100,17 +89,48 @@
   "skills": [
     "Aerospace Engineering",
     "Avionics",
-    "Power Systems",
+    "Electrical Power Systems (EPS)",
     "Systems Engineering",
-    "Team Coordination",
-    "Student Representation",
+    "Subsystem Integration",
     "Technical Documentation",
-    "English"
+    "Project Coordination",
+    "Team Leadership",
+    "Student Representation"
   ],
-  "projects": [],
+  "skillGroups": [
+    {
+      "label": "Aerospace & Systems Engineering",
+      "skills": [
+        "Aerospace Engineering",
+        "Avionics",
+        "Electrical Power Systems (EPS)",
+        "Systems Engineering",
+        "Subsystem Integration"
+      ]
+    },
+    {
+      "label": "Project & Documentation",
+      "skills": [
+        "Technical Documentation",
+        "Project Coordination",
+        "Team Leadership"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "project_1",
+      "name": "S-ART Student Satellite",
+      "role": "Avionics and Power Systems Integration",
+      "organization": "Cosmos Aerospace Association",
+      "date": "September 2024 – Present",
+      "description": "Student-developed microsatellite project focused on early-stage space systems engineering and subsystem integration.\nLed the avionics and power systems integration team, coordinating electrical and embedded systems interfaces.\nContributed to subsystem documentation, trade studies, and integration planning within a multidisciplinary student team.",
+      "url": ""
+    }
+  ],
   "links": {
-    "linkedin": "",
-    "github": "",
+    "linkedin": "https://www.linkedin.com/in/pablo-cod%C3%B3n-castellano-84456b226/",
+    "github": "https://github.com/pablocodoncastellano",
     "portfolio": "",
     "other": []
   }

@@ -23,36 +23,40 @@ function ensureAssetsDir() {
   if (!fs.existsSync(ASSETS_DIR)) fs.mkdirSync(ASSETS_DIR, { recursive: true });
 }
 
-// Returns { assets, warnings } where assets = { hasPhoto, photoDataUrl, hasLogo, logoDataUrl, logoRelPath, ... }
+// Returns { assets, warnings } where assets uses explicit names to distinguish
+// Pablo's profile photo from the LaunchCV brand logo.
+//
+// Profile photo fields: profilePhotoExists, profilePhotoDataUrl
+// Logo fields:          logoExists, logoDataUrl
 function getAssetInfo() {
   ensureAssetsDir();
   const warnings = [];
   const assets   = {};
 
-  // ── Profile photo ─────────────────────────────────────────────────────────
+  // ── Profile photo (pablo-profile.jpg) ─────────────────────────────────────
   const photoSrc = path.join(ROOT, 'pablo-profile.jpg');
   if (fs.existsSync(photoSrc)) {
     const dest = path.join(ASSETS_DIR, 'pablo-profile.jpg');
     fs.copyFileSync(photoSrc, dest);
-    assets.photoDataUrl = toDataUrl(photoSrc);
-    assets.hasPhoto     = true;
+    assets.profilePhotoDataUrl = toDataUrl(photoSrc);
+    assets.profilePhotoExists  = true;
   } else {
-    assets.photoDataUrl = '';
-    assets.hasPhoto     = false;
-    warnings.push('Profile photo (pablo-profile.jpg) not found in the repository root. CVs will be generated without a photo.');
+    assets.profilePhotoDataUrl = '';
+    assets.profilePhotoExists  = false;
+    warnings.push('Profile photo (pablo-profile.jpg) not found in the repository root. Visual CVs will show initials instead.');
   }
 
-  // ── Logo ──────────────────────────────────────────────────────────────────
+  // ── LaunchCV brand logo (launchcv-logo.png) ────────────────────────────────
   const logoSrc = path.join(ROOT, 'launchcv-logo.png');
   if (fs.existsSync(logoSrc)) {
     const dest = path.join(ASSETS_DIR, 'launchcv-logo.png');
     fs.copyFileSync(logoSrc, dest);
     assets.logoDataUrl = toDataUrl(logoSrc);
-    assets.hasLogo     = true;
+    assets.logoExists  = true;
   } else {
     assets.logoDataUrl = '';
-    assets.hasLogo     = false;
-    warnings.push('Logo (launchcv-logo.png) not found in the repository root. Using text branding instead.');
+    assets.logoExists  = false;
+    warnings.push('LaunchCV logo (launchcv-logo.png) not found in the repository root. Text branding will be used instead.');
   }
 
   return { assets, warnings };

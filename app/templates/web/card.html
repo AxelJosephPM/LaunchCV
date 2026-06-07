@@ -95,17 +95,22 @@
     color: #2e4a68;
     text-align: center;
     margin-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
-  .card-logo-img { height: 24px; margin-bottom: 12px; display: block; opacity: 0.85; }
-  .card-photo-wrap { text-align: center; margin-bottom: 14px; }
-  .card-photo { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
+  /* Profile photo — circular, prominent near the top of the card */
+  .card-photo-wrap { text-align: center; margin-bottom: 16px; }
+  .card-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); display: block; margin: 0 auto; }
+  /* LaunchCV brand logo — only in the footer, small and subtle */
+  .card-logo-img { height: 16px; opacity: 0.55; vertical-align: middle; }
 </style>
 </head>
 <body>
 
 <div class="card">
-  {{LOGO_IMG}}
-  {{PHOTO_BLOCK}}
+  {{PROFILE_PHOTO_BLOCK}}
   <div class="badge">Open to work</div>
   <h1>{{FULL_NAME}}</h1>
   <div class="headline">{{HEADLINE}}</div>
@@ -124,7 +129,8 @@
   <div class="contacts">
     {{EMAIL_LINE}}
     {{PHONE_LINE}}
-    <a href="{{LINKEDIN}}" class="card-contact-link" target="_blank">🔗 LinkedIn</a>
+    {{LINKEDIN_LINE}}
+    {{GITHUB_LINE}}
   </div>
 
   <hr class="divider">
@@ -148,7 +154,7 @@
   <p class="placeholder-note">Projects section coming soon.</p>
 
   <div class="footer-card">
-    Digital card generated with LaunchCV &mdash; {{YEAR}}
+    {{BRAND_LOGO_BLOCK}} Digital card generated with LaunchCV &mdash; {{YEAR}}
   </div>
 </div>
 

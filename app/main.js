@@ -347,7 +347,7 @@ ipcMain.handle('fs:pick-backup', async () => {
 ipcMain.handle('assets:status', async () => {
   try {
     const { assets, warnings } = assetService.getAssetInfo();
-    return { ok: true, hasPhoto: assets.hasPhoto, hasLogo: assets.hasLogo, warnings };
+    return { ok: true, hasPhoto: assets.profilePhotoExists, hasLogo: assets.logoExists, warnings };
   } catch (err) {
     return { ok: false, hasPhoto: false, hasLogo: false, warnings: [err.message] };
   }

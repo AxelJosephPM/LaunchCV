@@ -14,7 +14,8 @@ function esc(str) {
     .replace(/"/g, '&quot;');
 }
 
-// assets = { hasPhoto, hasLogo, privacy: { showPhoto, ... } }
+// assets = { profilePhotoExists, profilePhotoDataUrl, logoExists, logoDataUrl,
+//            privacy: { showPhoto, ... } }
 async function generate(profile, config, assets = {}) {
   if (!fs.existsSync(outputWeb)) fs.mkdirSync(outputWeb, { recursive: true });
 
@@ -38,6 +39,7 @@ async function generate(profile, config, assets = {}) {
 
 function applyCard(html, profile, config, privacy, assets = {}) {
   const p        = profile.personal || {};
+  const links    = profile.links    || {};
   const fullName = esc(`${p.firstName || ''} ${p.lastName || ''}`.trim());
   const topExp   = (profile.experience || []).find(e => e.current) || profile.experience?.[0];
 
@@ -51,7 +53,20 @@ function applyCard(html, profile, config, privacy, assets = {}) {
     ? `<div class="card-exp"><strong>${esc(topExp.title)}</strong> · ${esc(topExp.organization)}</div>`
     : '';
 
-  // Filenames match cvGenerator naming (spaces → underscores, no esc() on URL path).
+  // Resolve LinkedIn and GitHub from profile.links (preferred) with fallback to personal.
+  const linkedinUrl = links.linkedin || p.linkedin || '';
+  const githubUrl   = links.github   || p.github   || '';
+
+  // LinkedIn button: only rendered when a valid URL is present.
+  const linkedinLine = linkedinUrl
+    ? `<a href="${esc(linkedinUrl)}" class="card-contact-link" target="_blank" rel="noopener noreferrer">&#128279; LinkedIn</a>`
+    : '';
+  // GitHub button: only rendered when a valid URL is present.
+  const githubLine = githubUrl
+    ? `<a href="${esc(githubUrl)}" class="card-contact-link" target="_blank" rel="noopener noreferrer">&#9096; GitHub</a>`
+    : '';
+
+  // Filenames match cvGenerator naming (spaces → underscores).
   const ln = (p.lastName  || '').replace(/\s+/g, '_');
   const fn = (p.firstName || '').replace(/\s+/g, '_');
   const dlButtons = privacy.showDownloadButtons
@@ -60,34 +75,36 @@ function applyCard(html, profile, config, privacy, assets = {}) {
        <a href="HTML/PhotoSidebar/${fn}_${ln}_CV_PhotoSidebar.html" class="card-btn" download>&#11015; Photo CV</a>`
     : '';
 
-  const vcard  = `${fn}_${ln}.vcf`;
+  const vcard = `${fn}_${ln}.vcf`;
 
-  // Logo: use copied asset file with relative path; fall back to text.
-  const logoImg = assets.hasLogo
-    ? `<img src="assets/launchcv-logo.png" alt="LaunchCV" class="card-logo-img" onerror="this.style.display='none'">`
-    : '';
-
-  // Photo: use copied asset file; respect privacy.showPhoto.
-  const showPhoto = assets.hasPhoto && privacy.showPhoto !== false;
+  // Profile photo: use copied asset file with relative path; respect privacy.showPhoto.
+  // Falls back to nothing (no broken image) when the file is absent or photo is hidden.
+  const showPhoto  = assets.profilePhotoExists && privacy.showPhoto !== false;
   const photoBlock = showPhoto
     ? `<div class="card-photo-wrap"><img src="assets/pablo-profile.jpg" alt="${fullName}" class="card-photo"></div>`
     : '';
 
+  // LaunchCV brand logo: rendered only as small footer branding, never in the photo area.
+  const logoImg = assets.logoExists
+    ? `<img src="assets/launchcv-logo.png" alt="LaunchCV" class="card-logo-img" onerror="this.style.display='none'">`
+    : 'LaunchCV';
+
   const replacements = {
-    '{{FULL_NAME}}':  fullName,
-    '{{HEADLINE}}':   esc(p.headline),
-    '{{LOCATION}}':   esc(p.location),
-    '{{STATUS}}':     esc(p.status),
-    '{{SUMMARY}}':    esc(profile.summary),
-    '{{EMAIL_LINE}}': emailLine,
-    '{{PHONE_LINE}}': phoneLine,
-    '{{TOP_EXP}}':    expHtml,
-    '{{DL_BUTTONS}}': dlButtons,
-    '{{VCARD_FILE}}': vcard,
-    '{{LINKEDIN}}':   esc(p.linkedin),
-    '{{LOGO_IMG}}':   logoImg,
-    '{{PHOTO_BLOCK}}': photoBlock,
-    '{{YEAR}}':       String(new Date().getFullYear())
+    '{{FULL_NAME}}':     fullName,
+    '{{HEADLINE}}':      esc(p.headline),
+    '{{LOCATION}}':      esc(p.location),
+    '{{STATUS}}':        esc(p.status),
+    '{{SUMMARY}}':       esc(profile.summary),
+    '{{EMAIL_LINE}}':    emailLine,
+    '{{PHONE_LINE}}':    phoneLine,
+    '{{LINKEDIN_LINE}}': linkedinLine,
+    '{{GITHUB_LINE}}':   githubLine,
+    '{{TOP_EXP}}':       expHtml,
+    '{{DL_BUTTONS}}':    dlButtons,
+    '{{VCARD_FILE}}':    vcard,
+    '{{PROFILE_PHOTO_BLOCK}}': photoBlock,
+    '{{BRAND_LOGO_BLOCK}}':    logoImg,
+    '{{YEAR}}':          String(new Date().getFullYear())
   };
 
   let result = html;
@@ -100,7 +117,7 @@ function applyCard(html, profile, config, privacy, assets = {}) {
 function applyIndex(html, profile, assets = {}) {
   const p        = profile.personal || {};
   const fullName = esc(`${p.firstName || ''} ${p.lastName || ''}`.trim());
-  const logoImg  = assets.hasLogo
+  const logoImg  = assets.logoExists
     ? `<img src="assets/launchcv-logo.png" alt="LaunchCV" style="height:40px" onerror="this.style.display='none'">`
     : 'LaunchCV';
 

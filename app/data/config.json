@@ -18,7 +18,7 @@
     "showEmail": false,
     "showPhone": false,
     "showAddress": false,
-    "showPhoto": false,
+    "showPhoto": true,
     "showDownloadButtons": true,
     "showProjects": true,
     "showExperience": true

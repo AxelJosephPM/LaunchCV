@@ -7,22 +7,22 @@
     "firstName": "Pablo",
     "lastName": "Codón Castellano",
     "headline": "Estudiante de Ingeniería Aeroespacial",
-    "location": "Madrid, Comunidad de Madrid, España",
+    "location": "Madrid, España",
     "email": "",
     "phone": "",
     "address": "",
     "photo": "",
-    "linkedin": "",
-    "github": "",
+    "linkedin": "https://www.linkedin.com/in/pablo-cod%C3%B3n-castellano-84456b226/",
+    "github": "https://github.com/pablocodoncastellano",
     "website": "",
     "status": "En búsqueda activa"
   },
-  "summary": "Estudiante de Ingeniería Aeroespacial en la Universidad Rey Juan Carlos, con experiencia en asociaciones aeroespaciales, representación estudiantil y proyectos técnicos relacionados con la integración de aviónica y sistemas de potencia.",
+  "summary": "Estudiante de Ingeniería Aeroespacial en la Universidad Rey Juan Carlos con experiencia en proyectos de satélites estudiantes, integración de aviónica y sistemas de potencia, y representación estudiantil. Interesado en ingeniería de sistemas espaciales, aviónica, sistemas de potencia eléctrica y coordinación de proyectos técnicos.",
   "education": [
     {
       "id": "education_1",
       "institution": "Universidad Rey Juan Carlos",
-      "degree": "Grado en Ingeniería Aeroespacial, Aeronáutica y Astronáutica",
+      "degree": "Grado en Ingeniería Aeroespacial",
       "field": "Ingeniería Aeroespacial",
       "startDate": "Septiembre 2022",
       "endDate": "Mayo 2027",
@@ -45,40 +45,29 @@
       "id": "experience_1",
       "title": "Responsable de Integración de Aviónica y Sistemas de Potencia",
       "organization": "Cosmos Aerospace Association",
-      "type": "Tiempo parcial / Híbrido",
+      "type": "Tiempo parcial · Híbrido",
       "location": "Madrid, España",
       "startDate": "Septiembre 2024",
       "endDate": "Presente",
-      "description": "Responsable del equipo de integración de aviónica y sistemas de potencia del proyecto de satélite estudiantil S-ART.",
+      "description": "Lideró el equipo de integración de aviónica y sistemas de potencia dentro del proyecto de satélite estudiantil S-ART.\nCoordinó interfaces entre subsistemas, planificación de integración y documentación técnica entre equipos de ingeniería.\nContribuyó a la definición inicial de la misión y estudios de trade del subsistema de potencia eléctrica (EPS).",
       "current": true
     },
     {
       "id": "experience_2",
-      "title": "Vocal URJC",
-      "organization": "Asociación de Estudiantes de Aeronáutica y Espacio - AEAE",
+      "title": "Vocal — Representante URJC",
+      "organization": "Asociación de Estudiantes de Aeronáutica y Espacio (AEAE)",
       "type": "Voluntariado",
       "location": "España",
       "startDate": "Marzo 2023",
       "endDate": "Presente",
-      "description": "Representante de la URJC en la Asociación de Estudiantes de Aeronáutica y Espacio.",
-      "current": true
-    },
-    {
-      "id": "experience_3",
-      "title": "Estudiante",
-      "organization": "Universidad Rey Juan Carlos",
-      "type": "Tiempo completo",
-      "location": "Madrid, España",
-      "startDate": "Septiembre 2022",
-      "endDate": "Presente",
-      "description": "",
+      "description": "Representó a la Universidad Rey Juan Carlos en la asociación nacional de estudiantes aeroespaciales (AEAE).\nCoordinó el intercambio de información entre la asociación y los estudiantes de la URJC, y participó en eventos estudiantiles aeroespaciales a nivel nacional.",
       "current": true
     }
   ],
   "certifications": [
     {
       "id": "certifications_1",
-      "name": "Advanced English",
+      "name": "Cambridge English: Advanced (C1)",
       "issuer": "Cambridge English",
       "date": "Febrero 2022",
       "credentialId": "",
@@ -89,7 +78,7 @@
     {
       "id": "languages_1",
       "language": "Español",
-      "level": "Native"
+      "level": "Nativo"
     },
     {
       "id": "languages_2",
@@ -100,17 +89,38 @@
   "skills": [
     "Ingeniería Aeroespacial",
     "Aviónica",
-    "Sistemas de Potencia",
+    "Sistemas de Potencia Eléctrica (EPS)",
     "Ingeniería de Sistemas",
-    "Coordinación de Equipos",
-    "Representación Estudiantil",
+    "Integración de Subsistemas",
     "Documentación Técnica",
-    "Inglés"
+    "Coordinación de Proyectos",
+    "Liderazgo de Equipos",
+    "Representación Estudiantil"
   ],
-  "projects": [],
+  "skillGroups": [
+    {
+      "label": "Ingeniería Aeroespacial y Sistemas",
+      "skills": ["Ingeniería Aeroespacial", "Aviónica", "Sistemas de Potencia Eléctrica (EPS)", "Ingeniería de Sistemas", "Integración de Subsistemas"]
+    },
+    {
+      "label": "Proyecto y Documentación",
+      "skills": ["Documentación Técnica", "Coordinación de Proyectos", "Liderazgo de Equipos"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "project_1",
+      "name": "Satélite Estudiantil S-ART",
+      "role": "Integración de Aviónica y Sistemas de Potencia",
+      "organization": "Cosmos Aerospace Association",
+      "date": "Septiembre 2024 – Presente",
+      "description": "Proyecto de microsatélite desarrollado por estudiantes, centrado en las primeras etapas de la ingeniería de sistemas espaciales e integración de subsistemas.\nLideró el equipo de integración de aviónica y sistemas de potencia, coordinando interfaces de sistemas eléctricos y embebidos.\nContribuyó a la documentación de subsistemas, estudios de trade y planificación de integración en un equipo estudiantil multidisciplinar.",
+      "url": ""
+    }
+  ],
   "links": {
-    "linkedin": "",
-    "github": "",
+    "linkedin": "https://www.linkedin.com/in/pablo-cod%C3%B3n-castellano-84456b226/",
+    "github": "https://github.com/pablocodoncastellano",
     "portfolio": "",
     "other": []
   }
