@@ -15,19 +15,19 @@
   }
   body {
     font-family: 'Segoe UI', system-ui, sans-serif;
-    font-size: 10pt;
+    font-size: 9.4pt;
     color: var(--text);
     background: #fff;
     display: grid;
-    grid-template-columns: 210px 1fr;
+    grid-template-columns: 222px 1fr;
   }
   .sidebar {
     background: var(--navy);
     color: #fff;
-    padding: 20px 18px 16px;
+    padding: 18px 17px 14px;
   }
-  .sidebar h1 { font-size: 15pt; line-height: 1.2; margin-bottom: 4px; }
-  .sidebar .headline { font-size: 9pt; color: #a0b4cc; margin-bottom: 8px; }
+  .sidebar h1 { font-size: 13.2pt; line-height: 1.16; margin-bottom: 4px; }
+  .sidebar .headline { font-size: 8.5pt; color: #a0b4cc; margin-bottom: 7px; }
   .sidebar .status-badge {
     display: inline-block;
     background: var(--accent);
@@ -35,43 +35,44 @@
     font-size: 7.5pt;
     padding: 2px 8px;
     border-radius: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     font-weight: 600;
   }
-  .sidebar-section { margin-bottom: 14px; }
+  .sidebar-section { margin-bottom: 11px; }
   .sidebar-section h3 {
     font-size: 7.5pt;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--accent);
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     border-bottom: 1px solid #1e3558;
     padding-bottom: 3px;
   }
   .sidebar-section p, .sidebar-section a {
-    font-size: 8.5pt;
+    font-size: 8pt;
     color: #c8d6e5;
     word-break: break-word;
     text-decoration: none;
-    line-height: 1.4;
+    line-height: 1.32;
   }
   .cv-skill-tag {
     display: inline-block;
     background: #1e3558;
     color: #a8c4e0;
-    font-size: 7.5pt;
+    font-size: 7.1pt;
     padding: 1px 6px;
     border-radius: 8px;
     margin: 1px 2px 1px 0;
   }
-  .cv-lang-item { display: block; font-size: 9pt; color: #c8d6e5; margin-bottom: 1px; }
-  .cv-photo-wrap { margin-bottom: 10px; }
-  .cv-photo { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); display: block; }
+  .cv-lang-item { display: block; font-size: 8.2pt; color: #c8d6e5; margin-bottom: 2px; }
+  .cv-lang-item::after { content: none !important; }
+  .cv-photo-wrap { margin-bottom: 8px; }
+  .cv-photo { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); display: block; }
   /* Logo on dark sidebar: invert to white */
   .logo-img { height: 22px; margin-bottom: 8px; display: block; filter: brightness(0) invert(1); opacity: 0.9; }
   .logo-text-fallback { font-size: 8pt; color: #6a8fc0; margin-bottom: 8px; display: block; }
-  .main { padding: 20px 24px 16px; background: #fff; }
-  .main-section { margin-bottom: 16px; }
+  .main { padding: 18px 22px 14px; background: #fff; }
+  .main-section { margin-bottom: 11px; page-break-inside: avoid; break-inside: avoid; }
   .main-section h2 {
     font-size: 9.5pt;
     text-transform: uppercase;
@@ -79,9 +80,10 @@
     color: var(--navy);
     border-bottom: 1.5px solid var(--accent);
     padding-bottom: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+    page-break-after: avoid;
   }
-  .cv-entry { margin-bottom: 10px; page-break-inside: avoid; }
+  .cv-entry { margin-bottom: 7px; page-break-inside: avoid; break-inside: avoid; }
   .cv-entry-header {
     display: flex;
     justify-content: space-between;
@@ -89,16 +91,16 @@
     flex-wrap: wrap;
     gap: 4px;
   }
-  .cv-role, .cv-institution { font-weight: 600; font-size: 9.5pt; color: var(--navy); }
-  .cv-dates { font-size: 8.5pt; color: var(--muted); white-space: nowrap; }
-  .cv-org, .cv-degree { font-size: 9pt; color: var(--accent); }
-  .cv-location, .cv-type { font-size: 8.5pt; color: var(--muted); }
-  .cv-desc { font-size: 9pt; color: #333; margin-top: 3px; line-height: 1.45; }
-  .cv-desc-list { padding-left: 16px; margin-top: 3px; font-size: 9pt; color: #333; }
-  .cv-desc-list li { margin-bottom: 2px; line-height: 1.45; }
+  .cv-role, .cv-institution { font-weight: 600; font-size: 9pt; color: var(--navy); }
+  .cv-dates { font-size: 8pt; color: var(--muted); white-space: nowrap; }
+  .cv-org, .cv-degree { font-size: 8.6pt; color: var(--accent); }
+  .cv-location, .cv-type { font-size: 8pt; color: var(--muted); }
+  .cv-desc { font-size: 8.4pt; color: #333; margin-top: 2px; line-height: 1.35; }
+  .cv-desc-list { padding-left: 15px; margin-top: 2px; font-size: 8.4pt; color: #333; }
+  .cv-desc-list li { margin-bottom: 1px; line-height: 1.32; }
   .cv-cert-name { font-weight: 600; }
   .cv-issuer { font-size: 9pt; color: var(--muted); }
-  .summary-text { font-size: 9.5pt; line-height: 1.55; color: #333; }
+  .summary-text { font-size: 8.8pt; line-height: 1.4; color: #333; }
   .footer { text-align: center; font-size: 7.5pt; color: #bbb; margin-top: 16px; }
   @media print {
     @page { size: A4; margin: 0; }
@@ -130,7 +132,7 @@
 
   <div class="sidebar-section">
     <h3>Languages</h3>
-    {{LANGUAGES}}
+    {{LANGUAGES_LINES}}
   </div>
 
 </aside>

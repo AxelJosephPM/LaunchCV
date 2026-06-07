@@ -7,42 +7,43 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 11pt;
+    font-size: 10.2pt;
     color: #000;
     background: #fff;
     max-width: 720px;
-    margin: 48px auto;
-    padding: 0 32px;
-    line-height: 1.5;
+    margin: 34px auto;
+    padding: 0 28px;
+    line-height: 1.34;
   }
   /* ATS-safe: single column, no tables, no icons, no columns */
-  h1 { font-size: 16pt; margin-bottom: 4px; }
-  .subtitle { font-size: 11pt; margin-bottom: 2px; }
-  .contact { font-size: 10pt; color: #222; margin-bottom: 12px; }
+  h1 { font-size: 15pt; margin-bottom: 2px; }
+  .subtitle { font-size: 10.2pt; margin-bottom: 1px; }
+  .contact { font-size: 8.8pt; color: #222; margin-bottom: 8px; overflow-wrap: anywhere; }
   h2 {
-    font-size: 11pt;
+    font-size: 10pt;
     text-transform: uppercase;
     border-bottom: 1px solid #000;
-    padding-bottom: 2px;
-    margin: 16px 0 8px;
+    padding-bottom: 1px;
+    margin: 10px 0 5px;
+    page-break-after: avoid;
   }
-  .cv-entry { margin-bottom: 10px; }
-  .cv-entry-header { font-weight: bold; font-size: 10.5pt; }
-  .cv-dates { font-size: 10pt; }
-  .cv-degree, .cv-org { font-size: 10.5pt; }
-  .cv-location, .cv-type { font-size: 10pt; }
-  .cv-desc { margin-top: 3px; font-size: 10pt; }
+  .cv-entry { margin-bottom: 6px; }
+  .cv-entry-header { font-weight: bold; font-size: 9.7pt; }
+  .cv-dates { font-size: 9pt; }
+  .cv-degree, .cv-org { font-size: 9.6pt; }
+  .cv-location, .cv-type { font-size: 9pt; }
+  .cv-desc { margin-top: 2px; font-size: 9.2pt; }
   .cv-cert-name { font-weight: bold; }
-  .cv-issuer { font-size: 10pt; }
-  .cv-lang-item { font-size: 10pt; }
-  .cv-skill-tag { font-size: 10pt; }
+  .cv-issuer { font-size: 9pt; }
+  .cv-lang-item { font-size: 9pt; }
+  .cv-skill-tag { font-size: 9pt; }
   .cv-skill-tag::after { content: ', '; }
   .cv-skill-tag:last-child::after { content: ''; }
-  .cv-entry { margin-bottom: 10px; page-break-inside: avoid; }
-  .cv-desc-list { margin-top: 4px; padding-left: 18px; font-size: 10pt; }
-  .cv-desc-list li { margin-bottom: 2px; }
+  .cv-entry { page-break-inside: avoid; break-inside: avoid; }
+  .cv-desc-list { margin-top: 2px; padding-left: 15px; font-size: 9.2pt; }
+  .cv-desc-list li { margin-bottom: 1px; }
   @media print {
-    @page { size: A4; margin: 18mm 20mm; }
+    @page { size: A4; margin: 12mm 15mm; }
     body { margin: 0; padding: 0; max-width: 100%; }
   }
 </style>
@@ -51,7 +52,7 @@
 
 <h1>{{FULL_NAME}}</h1>
 <div class="subtitle">{{HEADLINE}}</div>
-<div class="contact">{{CONTACT_PIPE}}</div>
+<div class="contact">{{CONTACT_ATS_PIPE}}</div>
 
 <h2>Summary</h2>
 <p>{{SUMMARY}}</p>

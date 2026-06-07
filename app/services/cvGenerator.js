@@ -127,7 +127,11 @@ function applyProfile(html, profile, format, assets = {}) {
     // ── Contact lines (no empty separators)
     '{{CONTACT_PIPE}}':        renderContactLine(p, ' | '),
     '{{CONTACT_DOT}}':         renderContactLine(p, ' · '),
+    '{{CONTACT_CLEAN_PIPE}}':  renderContactLineClean(p, ' | '),
+    '{{CONTACT_CLEAN_DOT}}':   renderContactLineClean(p, ' · '),
+    '{{CONTACT_ATS_PIPE}}':    renderContactLineAts(p, ' | '),
     '{{CONTACT_FIELDS_PIPE}}': renderContactFields(p, ' | '),
+    '{{CONTACT_FIELDS_CLEAN_PIPE}}': renderContactFieldsClean(p, ' | '),
 
     // ── Asset blocks — {{LOGO_IMG}} intentionally blank; logo removed from CV output
     '{{PHOTO_BLOCK}}': photoBlock,
@@ -142,6 +146,7 @@ function applyProfile(html, profile, format, assets = {}) {
     '{{EXPERIENCE_FILTERED}}': renderExperience(filterExperience(ex)),
     '{{CERTIFICATIONS}}': renderCertifications(ce),
     '{{LANGUAGES}}':      renderLanguages(la),
+    '{{LANGUAGES_LINES}}': renderLanguagesLines(la),
     '{{SKILLS}}':         renderSkills(sk),
 
     // ── European CV sidebar blocks
@@ -209,6 +214,16 @@ function urlDisplay(url) {
   catch { return url.replace(/^https?:\/\//, ''); }
 }
 
+function urlDisplayAts(url, type) {
+  if (!url) return '';
+  if (type === 'linkedin') return 'linkedin.com/in/pablo-codon-castellano';
+  return urlDisplay(url).replace(/\/$/, '');
+}
+
+function socialAnchor(url, label, extraStyle = '') {
+  return `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;${extraStyle}">${esc(label)}</a>`;
+}
+
 // ─── Contact line helpers ─────────────────────────────────────────────────────
 
 function renderContactLine(p, sep) {
@@ -221,12 +236,41 @@ function renderContactLine(p, sep) {
   return parts.join(sep);
 }
 
+function renderContactLineClean(p, sep) {
+  const parts = [];
+  if (p.location) parts.push(esc(p.location));
+  if (p.email)    parts.push(`<a href="mailto:${esc(p.email)}" style="color:inherit;text-decoration:none;">${esc(p.email)}</a>`);
+  if (p.phone)    parts.push(esc(p.phone));
+  if (p.linkedin) parts.push(socialAnchor(p.linkedin, 'LinkedIn'));
+  if (p.github)   parts.push(socialAnchor(p.github, 'GitHub'));
+  return parts.join(sep);
+}
+
+function renderContactLineAts(p, sep) {
+  const parts = [];
+  if (p.location) parts.push(esc(p.location));
+  if (p.email)    parts.push(`<a href="mailto:${esc(p.email)}" style="color:inherit;text-decoration:none;">${esc(p.email)}</a>`);
+  if (p.phone)    parts.push(esc(p.phone));
+  if (p.linkedin) parts.push(socialAnchor(p.linkedin, urlDisplayAts(p.linkedin, 'linkedin')));
+  if (p.github)   parts.push(socialAnchor(p.github, urlDisplayAts(p.github, 'github')));
+  return parts.join(sep);
+}
+
 function renderContactFields(p, sep) {
   const parts = [];
   if (p.email)    parts.push(esc(p.email));
   if (p.phone)    parts.push(esc(p.phone));
   if (p.linkedin) parts.push(esc(urlDisplay(p.linkedin)));
   if (p.github)   parts.push(esc(urlDisplay(p.github)));
+  return parts.join(sep);
+}
+
+function renderContactFieldsClean(p, sep) {
+  const parts = [];
+  if (p.email)    parts.push(`<a href="mailto:${esc(p.email)}" style="color:inherit;text-decoration:none;">${esc(p.email)}</a>`);
+  if (p.phone)    parts.push(esc(p.phone));
+  if (p.linkedin) parts.push(socialAnchor(p.linkedin, 'LinkedIn'));
+  if (p.github)   parts.push(socialAnchor(p.github, 'GitHub'));
   return parts.join(sep);
 }
 
@@ -293,6 +337,10 @@ function renderLanguages(items) {
   return items.map(l => `<span class="cv-lang-item">${esc(l.language)} <em>(${esc(l.level)})</em></span>`).join(' · ');
 }
 
+function renderLanguagesLines(items) {
+  return items.map(l => `<span class="cv-lang-item">${esc(l.language)} <em>(${esc(l.level)})</em></span>`).join('');
+}
+
 function renderSkills(items) {
   return items.map(s => `<span class="cv-skill-tag">${esc(s)}</span>`).join(' ');
 }
@@ -301,10 +349,10 @@ function renderSkills(items) {
 
 function renderEuContact(p) {
   const lines = [];
-  if (p.email)    lines.push(`<div class="eu-contact-line">&#9993; <a href="mailto:${esc(p.email)}" style="color:inherit">${esc(p.email)}</a></div>`);
-  if (p.phone)    lines.push(`<div class="eu-contact-line">&#9742; ${esc(p.phone)}</div>`);
-  if (p.linkedin) lines.push(`<div class="eu-contact-line">&#128279; <a href="${esc(p.linkedin)}" style="color:inherit" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>`);
-  if (p.github)   lines.push(`<div class="eu-contact-line">&#9096; <a href="${esc(p.github)}" style="color:inherit" target="_blank" rel="noopener noreferrer">GitHub</a></div>`);
+  if (p.email)    lines.push(`<div class="eu-contact-line"><a href="mailto:${esc(p.email)}" style="color:inherit">${esc(p.email)}</a></div>`);
+  if (p.phone)    lines.push(`<div class="eu-contact-line">${esc(p.phone)}</div>`);
+  if (p.linkedin) lines.push(`<div class="eu-contact-line"><a href="${esc(p.linkedin)}" style="color:inherit" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>`);
+  if (p.github)   lines.push(`<div class="eu-contact-line"><a href="${esc(p.github)}" style="color:inherit" target="_blank" rel="noopener noreferrer">GitHub</a></div>`);
   if (!lines.length) lines.push(`<div class="eu-contact-line eu-placeholder">Add contact details in the app.</div>`);
   return lines.join('');
 }
@@ -561,10 +609,10 @@ function renderPsPhotoBlock(p, assets, format) {
 // Shows clean labels (LinkedIn / GitHub) rather than raw URLs to avoid line-wrapping issues.
 function renderPsContact(p) {
   const lines = [];
-  if (p.email)    lines.push(`<div class="ps-contact-line">&#9993; <a href="mailto:${esc(p.email)}">${esc(p.email)}</a></div>`);
-  if (p.phone)    lines.push(`<div class="ps-contact-line">&#9742; ${esc(p.phone)}</div>`);
-  if (p.linkedin) lines.push(`<div class="ps-contact-line">&#128279; <a href="${esc(p.linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>`);
-  if (p.github)   lines.push(`<div class="ps-contact-line">&#9096; <a href="${esc(p.github)}" target="_blank" rel="noopener noreferrer">GitHub</a></div>`);
+  if (p.email)    lines.push(`<div class="ps-contact-line"><a href="mailto:${esc(p.email)}">${esc(p.email)}</a></div>`);
+  if (p.phone)    lines.push(`<div class="ps-contact-line">${esc(p.phone)}</div>`);
+  if (p.linkedin) lines.push(`<div class="ps-contact-line"><a href="${esc(p.linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>`);
+  if (p.github)   lines.push(`<div class="ps-contact-line"><a href="${esc(p.github)}" target="_blank" rel="noopener noreferrer">GitHub</a></div>`);
   if (!lines.length) lines.push(`<div class="ps-contact-line" style="color:#304c68">Add contact details in the app.</div>`);
   return lines.join('');
 }

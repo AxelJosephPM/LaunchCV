@@ -20,15 +20,15 @@
     background: #fff;
     max-width: 680px;
     margin: 0 auto;
-    padding: 22px 28px;
-    line-height: 1.35;
+    padding: 18px 24px;
+    line-height: 1.32;
   }
 
   /* ── Header band ── */
   .op-header {
     border-top: 4px solid var(--accent);
     padding-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   .op-header h1 {
     font-size: 16pt;
@@ -57,7 +57,8 @@
     color: var(--accent);
     border-bottom: 1px solid var(--accent);
     padding-bottom: 1px;
-    margin: 10px 0 6px;
+    margin: 8px 0 5px;
+    page-break-after: avoid;
   }
 
   /* ── Summary ── */
@@ -87,7 +88,7 @@
   .op-dates       { color: var(--muted); white-space: nowrap; font-size: 8pt; }
 
   /* ── Experience entries ── */
-  .op-entry { margin-bottom: 7px; page-break-inside: avoid; }
+  .op-entry { margin-bottom: 6px; page-break-inside: avoid; break-inside: avoid; }
   .op-entry-header {
     display: flex;
     justify-content: space-between;
@@ -122,18 +123,8 @@
     margin: 2px 2px 2px 0;
   }
 
-  /* ── Footer ── */
-  .footer {
-    font-size: 7pt;
-    color: #bbb;
-    text-align: center;
-    margin-top: 12px;
-    padding-top: 6px;
-    border-top: 1px solid #eee;
-  }
-
   @media print {
-    body { margin: 0; padding: 14px 20px; }
+    body { margin: 0; padding: 12px 18px; }
     @page { size: A4; margin: 0; }
   }
 </style>
@@ -143,7 +134,7 @@
 <!-- ── Header ──────────────────────────── -->
 <div class="op-header">
   <h1>{{FULL_NAME}}</h1><span class="op-sep">|</span><span class="op-headline">{{HEADLINE}}</span>
-  <div class="op-meta">{{CONTACT_DOT}}</div>
+  <div class="op-meta">{{CONTACT_CLEAN_DOT}}</div>
 </div>
 
 <!-- ── Profile ─────────────────────────── -->
@@ -169,10 +160,6 @@
 <!-- ── Languages ───────────────────────── -->
 <h2>Languages</h2>
 <p style="font-size:8.5pt;">{{LANGUAGES}}</p>
-
-<div class="footer">
-  {{FULL_NAME}} &mdash; {{YEAR}}
-</div>
 
 </body>
 </html>
