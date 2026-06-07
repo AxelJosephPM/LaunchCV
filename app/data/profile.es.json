@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "language": "es",
+    "lastUpdated": "2026-06-07"
+  },
+  "personal": {
+    "firstName": "Pablo",
+    "lastName": "Codón Castellano",
+    "headline": "Estudiante de Ingeniería Aeroespacial",
+    "location": "Madrid, Comunidad de Madrid, España",
+    "email": "",
+    "phone": "",
+    "address": "",
+    "photo": "",
+    "linkedin": "",
+    "github": "",
+    "website": "",
+    "status": "En búsqueda activa"
+  },
+  "summary": "Estudiante de Ingeniería Aeroespacial en la Universidad Rey Juan Carlos, con experiencia en asociaciones aeroespaciales, representación estudiantil y proyectos técnicos relacionados con la integración de aviónica y sistemas de potencia.",
+  "education": [
+    {
+      "id": "education_1",
+      "institution": "Universidad Rey Juan Carlos",
+      "degree": "Grado en Ingeniería Aeroespacial, Aeronáutica y Astronáutica",
+      "field": "Ingeniería Aeroespacial",
+      "startDate": "Septiembre 2022",
+      "endDate": "Mayo 2027",
+      "location": "Madrid, España",
+      "grade": ""
+    },
+    {
+      "id": "education_2",
+      "institution": "Universidad CEU San Pablo",
+      "degree": "Bachillerato",
+      "field": "Ciencias de la Ingeniería",
+      "startDate": "Septiembre 2020",
+      "endDate": "Mayo 2022",
+      "location": "Madrid, España",
+      "grade": ""
+    }
+  ],
+  "experience": [
+    {
+      "id": "experience_1",
+      "title": "Responsable de Integración de Aviónica y Sistemas de Potencia",
+      "organization": "Cosmos Aerospace Association",
+      "type": "Tiempo parcial / Híbrido",
+      "location": "Madrid, España",
+      "startDate": "Septiembre 2024",
+      "endDate": "Presente",
+      "description": "Responsable del equipo de integración de aviónica y sistemas de potencia del proyecto de satélite estudiantil S-ART.",
+      "current": true
+    },
+    {
+      "id": "experience_2",
+      "title": "Vocal URJC",
+      "organization": "Asociación de Estudiantes de Aeronáutica y Espacio - AEAE",
+      "type": "Voluntariado",
+      "location": "España",
+      "startDate": "Marzo 2023",
+      "endDate": "Presente",
+      "description": "Representante de la URJC en la Asociación de Estudiantes de Aeronáutica y Espacio.",
+      "current": true
+    },
+    {
+      "id": "experience_3",
+      "title": "Estudiante",
+      "organization": "Universidad Rey Juan Carlos",
+      "type": "Tiempo completo",
+      "location": "Madrid, España",
+      "startDate": "Septiembre 2022",
+      "endDate": "Presente",
+      "description": "",
+      "current": true
+    }
+  ],
+  "certifications": [
+    {
+      "id": "certifications_1",
+      "name": "Advanced English",
+      "issuer": "Cambridge English",
+      "date": "Febrero 2022",
+      "credentialId": "",
+      "url": ""
+    }
+  ],
+  "languages": [
+    {
+      "id": "languages_1",
+      "language": "Español",
+      "level": "Native"
+    },
+    {
+      "id": "languages_2",
+      "language": "Inglés",
+      "level": "C1 (Advanced)"
+    }
+  ],
+  "skills": [
+    "Ingeniería Aeroespacial",
+    "Aviónica",
+    "Sistemas de Potencia",
+    "Ingeniería de Sistemas",
+    "Coordinación de Equipos",
+    "Representación Estudiantil",
+    "Documentación Técnica",
+    "Inglés"
+  ],
+  "projects": [],
+  "links": {
+    "linkedin": "",
+    "github": "",
+    "portfolio": "",
+    "other": []
+  }
+}

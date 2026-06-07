@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{FULL_NAME}}</title>
+<meta name="description" content="{{HEADLINE}} — {{LOCATION}}">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --accent: #4a90e2;
+    --light: #f4f7fb;
+    --muted: #6b7a90;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--navy);
+    color: #eef2f7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 48px;
+  }
+  .card {
+    background: #152236;
+    border-radius: 20px;
+    max-width: 480px;
+    width: 100%;
+    padding: 36px 28px 28px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    margin-top: 16px;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  h1 { font-size: 26px; font-weight: 700; line-height: 1.1; }
+  .headline { color: var(--accent); font-size: 14px; margin: 6px 0 4px; }
+  .location { color: var(--muted); font-size: 12px; margin-bottom: 20px; }
+  .divider { border: none; border-top: 1px solid #1e3558; margin: 20px 0; }
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .about-text { font-size: 13px; color: #c8d6e5; line-height: 1.6; }
+  .top-exp { font-size: 12px; color: #a0b4cc; margin-top: 8px; }
+  .contacts { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+  .card-contact-link {
+    color: #a0c4f0;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  .card-contact-link:hover { color: var(--accent); }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .card-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .card-btn:hover { background: #2e74cc; }
+  .card-btn.outline {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+  }
+  .card-btn.outline:hover { background: #1e3558; }
+  .placeholder-note {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 6px;
+  }
+  .footer-card {
+    font-size: 10px;
+    color: #2e4a68;
+    text-align: center;
+    margin-top: 28px;
+  }
+  .card-logo-img { height: 24px; margin-bottom: 12px; display: block; opacity: 0.85; }
+  .card-photo-wrap { text-align: center; margin-bottom: 14px; }
+  .card-photo { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="card">
+  {{LOGO_IMG}}
+  {{PHOTO_BLOCK}}
+  <div class="badge">Open to work</div>
+  <h1>{{FULL_NAME}}</h1>
+  <div class="headline">{{HEADLINE}}</div>
+  <div class="location">📍 {{LOCATION}}</div>
+
+  <hr class="divider">
+
+  <div class="section-label">About</div>
+  <p class="about-text">{{SUMMARY}}</p>
+
+  {{TOP_EXP}}
+
+  <hr class="divider">
+
+  <div class="section-label">Contact</div>
+  <div class="contacts">
+    {{EMAIL_LINE}}
+    {{PHONE_LINE}}
+    <a href="{{LINKEDIN}}" class="card-contact-link" target="_blank">🔗 LinkedIn</a>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-label">Download CV</div>
+  <div class="btn-group">
+    {{DL_BUTTONS}}
+  </div>
+  <p class="placeholder-note">More formats coming soon.</p>
+
+  <hr class="divider">
+
+  <div class="section-label">Add to Contacts</div>
+  <div class="btn-group">
+    <a href="Contact/{{VCARD_FILE}}" class="card-btn outline" download>👤 Save Contact (.vcf)</a>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-label">Projects</div>
+  <p class="placeholder-note">Projects section coming soon.</p>
+
+  <div class="footer-card">
+    Digital card generated with LaunchCV &mdash; {{YEAR}}
+  </div>
+</div>
+
+</body>
+</html>

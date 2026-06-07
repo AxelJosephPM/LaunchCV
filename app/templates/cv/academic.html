@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{FULL_NAME}} — Academic CV</title>
+<style>
+  /* ─── Academic CV — sober single-column, university style ─── */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 10.5pt;
+    color: #111;
+    background: #fff;
+    max-width: 700px;
+    margin: 48px auto;
+    padding: 0 36px;
+    line-height: 1.55;
+  }
+
+  /* ── Header ── */
+  .ac-header { text-align: center; margin-bottom: 28px; }
+  .ac-header h1 {
+    font-size: 20pt;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+  }
+  .ac-header .ac-headline {
+    font-size: 11pt;
+    font-style: italic;
+    color: #444;
+    margin-bottom: 4px;
+  }
+  .ac-header .ac-location {
+    font-size: 9.5pt;
+    color: #666;
+    margin-bottom: 6px;
+  }
+  .ac-header .ac-contact {
+    font-size: 9pt;
+    color: #555;
+  }
+  .ac-header-rule {
+    border: none;
+    border-top: 2px solid #111;
+    margin: 14px 0 0;
+  }
+
+  /* ── Section headings ── */
+  h2 {
+    font-size: 10.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 700;
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 3px;
+    margin: 20px 0 10px;
+    color: #111;
+  }
+
+  /* ── Academic entries ── */
+  .ac-entry { margin-bottom: 14px; }
+  .ac-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .ac-institution {
+    font-weight: 700;
+    font-size: 10.5pt;
+  }
+  .ac-degree {
+    font-size: 10pt;
+    font-style: italic;
+    color: #333;
+  }
+  .ac-location { font-size: 9pt; color: #666; margin-top: 1px; }
+  .ac-grade    { font-size: 9pt; color: #555; }
+  .ac-dates    {
+    font-size: 9pt;
+    color: #555;
+    white-space: nowrap;
+    min-width: 130px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .ac-role { font-weight: 700; font-size: 10.5pt; }
+  .ac-org  { font-size: 10pt; font-style: italic; color: #333; }
+  .ac-type { font-size: 9pt; color: #666; }
+  .ac-desc {
+    font-size: 9.5pt;
+    color: #333;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  /* ── Research interests list ── */
+  .ac-interests {
+    columns: 2;
+    column-gap: 24px;
+    list-style: disc;
+    padding-left: 18px;
+    font-size: 10pt;
+    color: #222;
+    line-height: 1.7;
+  }
+
+  /* ── Skills inline ── */
+  .cv-skill-tag { font-size: 10pt; }
+  .cv-skill-tag::after { content: ' · '; color: #aaa; }
+  .cv-skill-tag:last-child::after { content: ''; }
+
+  /* ── Languages inline ── */
+  .cv-lang-item { font-size: 10pt; }
+
+  /* ── Empty state ── */
+  .cv-empty { font-size: 9pt; color: #aaa; font-style: italic; }
+
+  /* ── Footer ── */
+  .footer {
+    font-size: 8pt;
+    color: #aaa;
+    text-align: center;
+    margin-top: 36px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+  }
+
+  .ac-entry { page-break-inside: avoid; }
+  @media print {
+    @page { size: A4; margin: 16mm 18mm; }
+    body { margin: 0; padding: 0; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Header ─────────────────────────────────────────── -->
+<div class="ac-header">
+  <h1>{{FULL_NAME}}</h1>
+  <div class="ac-headline">{{HEADLINE}}</div>
+  <div class="ac-location">{{LOCATION}}</div>
+  <div class="ac-contact">{{CONTACT_FIELDS_PIPE}}</div>
+  <hr class="ac-header-rule">
+</div>
+
+<!-- ── Academic Profile ───────────────────────────────── -->
+<h2>Academic Profile</h2>
+<p style="font-size:10pt; line-height:1.65;">{{SUMMARY}}</p>
+
+<!-- ── Education ─────────────────────────────────────── -->
+<h2>Education</h2>
+{{EDUCATION_ACADEMIC}}
+
+<!-- ── Research &amp; Technical Interests ──────────────── -->
+<h2>Research &amp; Technical Interests</h2>
+{{RESEARCH_INTERESTS}}
+
+<!-- ── Academic &amp; Professional Experience ───────────── -->
+<h2>Academic &amp; Professional Experience</h2>
+{{EXPERIENCE_ACADEMIC}}
+
+<!-- ── Certifications ────────────────────────────────── -->
+<h2>Certifications and Courses</h2>
+{{CERTIFICATIONS}}
+
+<!-- ── Skills ────────────────────────────────────────── -->
+<h2>Technical Skills</h2>
+<p>{{SKILLS}}</p>
+
+<!-- ── Languages ─────────────────────────────────────── -->
+<h2>Languages</h2>
+<p>{{LANGUAGES}}</p>
+
+<div class="footer">
+  Curriculum Vitae &mdash; {{FULL_NAME}} &mdash; {{YEAR}}
+</div>
+
+</body>
+</html>

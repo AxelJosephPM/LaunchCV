@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy"
+  content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:;">
+<title>LaunchCV</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ── Sidebar ────────────────────────────────────────────────── -->
+  <nav id="sidebar">
+    <div class="logo">
+      <img src="assets/launchcv-logo.png" alt="" class="logo-icon-img" onerror="this.style.display='none'">
+      <span class="logo-text">LaunchCV</span>
+    </div>
+    <div class="nav-section-label">Profile</div>
+    <button class="nav-btn active" data-page="personal">Personal Info</button>
+    <button class="nav-btn" data-page="education">Education</button>
+    <button class="nav-btn" data-page="experience">Experience</button>
+    <button class="nav-btn" data-page="certifications">Certifications</button>
+    <button class="nav-btn" data-page="languages">Languages</button>
+    <button class="nav-btn" data-page="skills">Skills</button>
+    <button class="nav-btn" data-page="links">Links</button>
+
+    <div class="nav-section-label">Output</div>
+    <button class="nav-btn" data-page="generate">Generate</button>
+    <button class="nav-btn" data-page="preview">Preview</button>
+    <button class="nav-btn" data-page="webqr">Web & QR</button>
+
+    <div class="nav-section-label">Settings</div>
+    <button class="nav-btn" data-page="privacy">Privacy</button>
+    <button class="nav-btn" data-page="backup">Backup</button>
+
+    <div class="sidebar-footer">
+      <button class="btn-action sidebar-save" id="btn-save-global">💾 Save Profile</button>
+      <div id="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Main content ──────────────────────────────────────────── -->
+  <main id="content">
+    <div id="status-bar" class="status-bar hidden"></div>
+
+    <!-- Personal Info -->
+    <section id="page-personal" class="page active">
+      <h2 class="page-title">Personal Information</h2>
+      <div class="form-grid two-col">
+        <div class="form-group"><label>First Name</label><input type="text" id="firstName"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" id="lastName"></div>
+        <div class="form-group full-span"><label>Headline</label><input type="text" id="headline" placeholder="e.g. Aerospace Engineering Student"></div>
+        <div class="form-group full-span"><label>Professional Summary</label><textarea id="summary" rows="4"></textarea></div>
+        <div class="form-group full-span"><label>Location</label><input type="text" id="location" placeholder="City, Region, Country"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="email"></div>
+        <div class="form-group"><label>Phone</label><input type="text" id="phone"></div>
+        <div class="form-group"><label>Status</label><input type="text" id="status" placeholder="e.g. Open to work"></div>
+        <div class="form-group"><label>Photo URL (optional)</label><input type="text" id="photo"></div>
+      </div>
+      <div class="page-actions">
+        <button class="btn-primary" id="btn-save-personal">Save Personal Info</button>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="page-education" class="page">
+      <h2 class="page-title">Education</h2>
+      <div id="education-list" class="entry-list"></div>
+      <div class="page-actions">
+        <button class="btn-secondary" id="btn-add-education">+ Add Education</button>
+        <button class="btn-primary" id="btn-save-education">Save Education</button>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="page-experience" class="page">
+      <h2 class="page-title">Experience</h2>
+      <div id="experience-list" class="entry-list"></div>
+      <div class="page-actions">
+        <button class="btn-secondary" id="btn-add-experience">+ Add Experience</button>
+        <button class="btn-primary" id="btn-save-experience">Save Experience</button>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="page-certifications" class="page">
+      <h2 class="page-title">Certifications</h2>
+      <div id="certifications-list" class="entry-list"></div>
+      <div class="page-actions">
+        <button class="btn-secondary" id="btn-add-certification">+ Add Certification</button>
+        <button class="btn-primary" id="btn-save-certifications">Save Certifications</button>
+      </div>
+    </section>
+
+    <!-- Languages -->
+    <section id="page-languages" class="page">
+      <h2 class="page-title">Languages</h2>
+      <div id="languages-list" class="entry-list"></div>
+      <div class="page-actions">
+        <button class="btn-secondary" id="btn-add-language">+ Add Language</button>
+        <button class="btn-primary" id="btn-save-languages">Save Languages</button>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="page-skills" class="page">
+      <h2 class="page-title">Skills</h2>
+      <p class="section-hint">Enter each skill on a new line, or separated by commas.</p>
+      <div class="form-group">
+        <textarea id="skills-textarea" rows="10" placeholder="Aerospace Engineering&#10;Avionics&#10;Team Coordination"></textarea>
+      </div>
+      <div class="page-actions">
+        <button class="btn-primary" id="btn-save-skills">Save Skills</button>
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section id="page-links" class="page">
+      <h2 class="page-title">Links & Social</h2>
+      <div class="form-grid two-col">
+        <div class="form-group full-span"><label>LinkedIn URL</label><input type="url" id="link-linkedin" placeholder="https://linkedin.com/in/..."></div>
+        <div class="form-group full-span"><label>GitHub URL</label><input type="url" id="link-github" placeholder="https://github.com/..."></div>
+        <div class="form-group full-span"><label>Portfolio / Website</label><input type="url" id="link-portfolio"></div>
+      </div>
+      <div class="page-actions">
+        <button class="btn-primary" id="btn-save-links">Save Links</button>
+      </div>
+    </section>
+
+    <!-- Generate -->
+    <section id="page-generate" class="page">
+      <h2 class="page-title">Generate Files</h2>
+
+      <div id="asset-status-bar" class="asset-status hidden"></div>
+
+      <div class="generate-grid">
+        <div class="gen-card">
+          <h3>CV Formats</h3>
+          <p>Select which formats to generate:</p>
+          <div class="checkbox-list">
+            <label><input type="checkbox" class="cv-check" value="harvard" checked> Harvard-style CV</label>
+            <label><input type="checkbox" class="cv-check" value="ats" checked> ATS-Friendly CV</label>
+            <label><input type="checkbox" class="cv-check" value="modern" checked> Modern CV</label>
+            <label><input type="checkbox" class="cv-check" value="european"> European / Europass-like</label>
+            <label><input type="checkbox" class="cv-check" value="academic"> Academic CV</label>
+            <label><input type="checkbox" class="cv-check" value="one-page"> One-Page CV</label>
+            <label><input type="checkbox" class="cv-check" value="international"> International Resume</label>
+            <label><input type="checkbox" class="cv-check" value="photo-sidebar"> Photo Sidebar CV — visual CV with side profile photo</label>
+          </div>
+          <div class="btn-group-gen">
+            <button class="btn-primary" id="btn-gen-selected">Generate Selected CVs (HTML)</button>
+            <button class="btn-secondary" id="btn-gen-all-cvs">Generate All CVs (HTML)</button>
+          </div>
+        </div>
+
+        <div class="gen-card">
+          <h3>PDF Files</h3>
+          <p>Generate print-ready PDF versions saved to <code>output/PDF/</code></p>
+          <div class="btn-group-gen vertical">
+            <button class="btn-primary" id="btn-gen-selected-pdf">Generate Selected CVs (PDF)</button>
+            <button class="btn-secondary" id="btn-gen-all-pdfs">Generate All CVs (PDF)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="generate-grid" style="margin-top: 16px;">
+        <div class="gen-card">
+          <h3>Other Files</h3>
+          <div class="btn-group-gen vertical">
+            <button class="btn-primary" id="btn-gen-webcard">Generate Web Card</button>
+            <button class="btn-primary" id="btn-gen-qr">Generate QR Code</button>
+            <button class="btn-primary" id="btn-gen-vcard">Generate vCard (.vcf)</button>
+          </div>
+        </div>
+
+        <div class="gen-card">
+          <h3>Generate Everything</h3>
+          <p>HTML CVs + PDFs + Web Card + QR + vCard in one step.</p>
+          <button class="btn-accent" id="btn-gen-everything" style="width:100%; margin-top:10px;">Generate Everything</button>
+        </div>
+      </div>
+
+      <div class="gen-card" style="margin-top: 16px;">
+        <h3>Output Folder</h3>
+        <button class="btn-secondary" id="btn-open-output">Open Output Folder</button>
+      </div>
+    </section>
+
+    <!-- Preview -->
+    <section id="page-preview" class="page">
+      <h2 class="page-title">CV Preview</h2>
+      <div class="preview-controls">
+        <select id="preview-format-select">
+          <option value="harvard">Harvard-style CV</option>
+          <option value="ats">ATS-Friendly CV</option>
+          <option value="modern">Modern CV</option>
+          <option value="european">European CV</option>
+          <option value="academic">Academic CV</option>
+          <option value="one-page">One-Page CV</option>
+          <option value="international">International Resume</option>
+          <option value="photo-sidebar">Photo Sidebar CV</option>
+        </select>
+        <button class="btn-primary" id="btn-refresh-preview">Refresh Preview</button>
+      </div>
+      <div id="preview-frame-wrapper">
+        <iframe id="preview-frame" sandbox="allow-same-origin allow-scripts" title="CV Preview"></iframe>
+      </div>
+    </section>
+
+    <!-- Web & QR -->
+    <section id="page-webqr" class="page">
+      <h2 class="page-title">Web Card & QR Settings</h2>
+      <div class="form-grid two-col">
+        <div class="form-group full-span">
+          <label>Public URL (GitHub Pages base URL)</label>
+          <input type="url" id="webcard-url" placeholder="https://username.github.io/LaunchCV/">
+          <span class="field-hint">Base URL of your GitHub Pages site. The QR code will point to this URL + the QR target below.</span>
+        </div>
+        <div class="form-group full-span">
+          <label>QR Target Path</label>
+          <input type="text" id="qr-target" placeholder="card.html">
+          <span class="field-hint">Path appended to the Public URL for the QR code (e.g. <code>card.html</code>). Leave blank to use the base URL.</span>
+        </div>
+        <div class="form-group"><label>GitHub Username</label><input type="text" id="github-user"></div>
+        <div class="form-group"><label>Repository Name</label><input type="text" id="repo-name" value="LaunchCV"></div>
+        <div class="form-group"><label>QR Size (px)</label><input type="number" id="qr-size" value="300" min="100" max="1000"></div>
+      </div>
+      <div class="page-actions">
+        <button class="btn-primary" id="btn-save-webqr">Save Web & QR Settings</button>
+      </div>
+
+      <div class="gen-card" style="margin-top: 20px;">
+        <h3>GitHub Pages Publishing</h3>
+        <p>Prepare the <code>docs/</code> folder so GitHub Pages can serve your Web Card publicly.</p>
+        <p class="section-hint" style="margin-top: 6px;">
+          This regenerates the Web Card and copies it — along with your CV PDFs — into <code>docs/</code>.
+          Then enable GitHub Pages in your repository: <strong>Settings → Pages → master → /docs</strong>.
+        </p>
+        <div class="btn-group-gen vertical" style="margin-top: 12px;">
+          <button class="btn-primary" id="btn-prepare-pages">🌐 Prepare GitHub Pages Website</button>
+          <button class="btn-secondary" id="btn-open-docs">📁 Open docs/ Folder</button>
+        </div>
+        <p class="section-hint" style="margin-top: 10px; color: var(--text-muted);">
+          Temporary URL while hosted under Axel's account:
+          <strong>https://axeljosephpm.github.io/LaunchCV/</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- Privacy -->
+    <section id="page-privacy" class="page">
+      <h2 class="page-title">Privacy Settings</h2>
+      <p class="section-hint">These settings control what is visible on the public Web Card.</p>
+      <div class="privacy-list">
+        <label class="toggle-row"><span>Show Email on Web Card</span><input type="checkbox" id="priv-email"></label>
+        <label class="toggle-row"><span>Show Phone on Web Card</span><input type="checkbox" id="priv-phone"></label>
+        <label class="toggle-row"><span>Show Address on Web Card</span><input type="checkbox" id="priv-address"></label>
+        <label class="toggle-row"><span>Show Photo on Web Card</span><input type="checkbox" id="priv-photo"></label>
+        <label class="toggle-row"><span>Show CV Download Buttons</span><input type="checkbox" id="priv-download" checked></label>
+        <label class="toggle-row"><span>Show Projects Section</span><input type="checkbox" id="priv-projects" checked></label>
+        <label class="toggle-row"><span>Show Experience Section</span><input type="checkbox" id="priv-experience" checked></label>
+      </div>
+      <div class="page-actions">
+        <button class="btn-primary" id="btn-save-privacy">Save Privacy Settings</button>
+      </div>
+    </section>
+
+    <!-- Backup -->
+    <section id="page-backup" class="page">
+      <h2 class="page-title">Backup & Restore</h2>
+      <div class="gen-card">
+        <h3>Create Backup</h3>
+        <p>Creates a timestamped copy of all your profile data and settings.</p>
+        <button class="btn-primary" id="btn-create-backup" style="margin-top: 12px;">💾 Create Backup Now</button>
+      </div>
+      <div class="gen-card" style="margin-top: 16px;">
+        <h3>Available Backups</h3>
+        <div id="backup-list">Loading...</div>
+        <div class="btn-group-gen" style="margin-top: 12px;">
+          <button class="btn-secondary" id="btn-refresh-backups">↻ Refresh List</button>
+          <button class="btn-secondary" id="btn-restore-selected">Restore Selected</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

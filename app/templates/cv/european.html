@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{FULL_NAME}} — European CV</title>
+<style>
+  /* ─── European CV — two-column institutional layout ─── */
+  :root {
+    --eu-blue:    #003d82;
+    --eu-mid:     #1a4d99;
+    --eu-accent:  #6daee0;
+    --eu-sidebar: #f0f4fb;
+    --text:       #1a1a1a;
+    --muted:      #4a5568;
+    --border:     #cbd5e0;
+    --sidebar-w:  230px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Arial', 'Helvetica Neue', sans-serif;
+    font-size: 9.5pt;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.45;
+  }
+
+  /* ── Layout ── */
+  .page {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    background: var(--eu-blue);
+    color: #edf2fc;
+    padding: 18px 14px 14px;
+  }
+  .sidebar-name {
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 3px;
+    color: #fff;
+  }
+  .sidebar-headline {
+    font-size: 8pt;
+    color: var(--eu-accent);
+    margin-bottom: 3px;
+    font-style: italic;
+  }
+  .sidebar-location {
+    font-size: 7.5pt;
+    color: #a8c4e8;
+    margin-bottom: 10px;
+  }
+  .sidebar-divider {
+    border: none;
+    border-top: 1px solid #1e5a9c;
+    margin: 2px 0 8px;
+  }
+  .sidebar-section { margin-bottom: 12px; }
+  .sidebar-section h3 {
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--eu-accent);
+    margin-bottom: 5px;
+  }
+
+  /* Contact */
+  .eu-contact-line {
+    font-size: 8.5pt;
+    color: #cde;
+    margin-bottom: 5px;
+    word-break: break-all;
+  }
+  .eu-placeholder { color: #6a8fc0; font-style: italic; font-size: 8pt; }
+
+  /* Languages */
+  .eu-lang-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 8pt;
+    color: #cde;
+    margin-bottom: 3px;
+    padding-bottom: 3px;
+    border-bottom: 1px dotted #1e5a9c;
+  }
+  .eu-lang-row:last-child { border-bottom: none; }
+  .eu-lang-name  { font-weight: 600; }
+  .eu-lang-level { font-style: italic; color: var(--eu-accent); font-size: 7.5pt; }
+
+  /* Skills */
+  .eu-skill-pill {
+    display: inline-block;
+    background: rgba(255,255,255,0.11);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 3px;
+    padding: 2px 7px;
+    font-size: 7.5pt;
+    color: #cde;
+    margin: 2px 2px 2px 0;
+  }
+
+  /* Photo */
+  .cv-photo-wrap { text-align: center; margin-bottom: 8px; }
+  .cv-photo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.25); }
+  /* Logo on dark sidebar: invert to white */
+  .logo-img { height: 18px; margin-bottom: 8px; display: block; filter: brightness(0) invert(1); opacity: 0.85; }
+  .logo-text-fallback { font-size: 7.5pt; color: #6a8fc0; margin-bottom: 6px; display: block; }
+  /* Certifications sidebar */
+  .eu-cert { margin-bottom: 8px; }
+  .eu-cert-name { font-weight: 600; font-size: 8.5pt; color: #edf2fc; }
+  .eu-cert-meta { font-size: 7.5pt; color: var(--eu-accent); }
+
+  /* ── Main content ── */
+  .main {
+    padding: 18px 20px 14px;
+    background: #fff;
+  }
+  .main-section { margin-bottom: 12px; }
+  .main-section h2 {
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--eu-blue);
+    border-bottom: 2px solid var(--eu-blue);
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+  }
+  .summary-eu { font-size: 9pt; line-height: 1.65; color: #333; }
+
+  /* Entry blocks */
+  .cv-entry { margin-bottom: 8px; page-break-inside: avoid; }
+  .cv-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .cv-role, .cv-institution {
+    font-weight: 700;
+    font-size: 9.5pt;
+    color: var(--text);
+  }
+  .cv-dates {
+    font-size: 8.5pt;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .cv-org, .cv-degree {
+    font-size: 9pt;
+    color: var(--eu-mid);
+    font-style: italic;
+  }
+  .cv-location, .cv-type { font-size: 8.5pt; color: var(--muted); }
+  .cv-desc { font-size: 8.5pt; color: #444; margin-top: 3px; line-height: 1.5; }
+  .cv-empty { font-size: 8.5pt; color: #aaa; font-style: italic; }
+
+  /* Footer */
+  .footer {
+    font-size: 7pt;
+    color: #aaa;
+    text-align: center;
+    margin-top: 24px;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+  }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    body  { font-size: 9pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { display: grid; }
+    .sidebar { min-height: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── Sidebar ─────────────────────────────────────── -->
+  <aside class="sidebar">
+    {{LOGO_IMG}}
+    {{PHOTO_BLOCK}}
+    <div class="sidebar-name">{{FULL_NAME}}</div>
+    <div class="sidebar-headline">{{HEADLINE}}</div>
+    <div class="sidebar-location">{{LOCATION}}</div>
+
+    <div class="sidebar-section">
+      <h3>Contact</h3>
+      {{EU_CONTACT}}
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-section">
+      <h3>Languages</h3>
+      {{LANGUAGES_SIDEBAR}}
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-section">
+      <h3>Technical Skills</h3>
+      {{SKILLS_SIDEBAR}}
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-section">
+      <h3>Certifications</h3>
+      {{CERTIFICATIONS_SIDEBAR}}
+    </div>
+  </aside>
+
+  <!-- ── Main content ────────────────────────────────── -->
+  <main class="main">
+
+    <div class="main-section">
+      <h2>Professional Profile</h2>
+      <p class="summary-eu">{{SUMMARY}}</p>
+    </div>
+
+    <div class="main-section">
+      <h2>Work &amp; Voluntary Experience</h2>
+      {{EXPERIENCE}}
+    </div>
+
+    <div class="main-section">
+      <h2>Education and Training</h2>
+      {{EDUCATION}}
+    </div>
+
+    <div class="footer">
+      European Curriculum Vitae &mdash; {{FULL_NAME}} &mdash; {{YEAR}}
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>

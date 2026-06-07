@@ -1,0 +1,50 @@
+{
+  "name": "launchcv",
+  "version": "1.0.0",
+  "description": "Professional CV generator and digital card builder for aerospace professionals.",
+  "main": "app/main.js",
+  "scripts": {
+    "dev": "electron .",
+    "start": "electron .",
+    "build": "echo 'Build step: transpile or bundle if needed'",
+    "dist": "electron-builder --win --x64",
+    "pages:prepare": "node scripts/publish-web-to-docs.js",
+    "pages:generate": "node scripts/generate-and-publish.js"
+  },
+  "keywords": [
+    "cv",
+    "resume",
+    "electron",
+    "aerospace"
+  ],
+  "author": "AxelJosephPM",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.0.0",
+    "playwright-core": "^1.60.0"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "build": {
+    "appId": "com.launchcv.app",
+    "productName": "LaunchCV",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "app/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "app/assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

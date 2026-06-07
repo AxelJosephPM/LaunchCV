@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "activeLanguage": "en",
+  "webCard": {
+    "publicUrl": "https://axeljosephpm.github.io/LaunchCV/",
+    "qrTarget": "card.html",
+    "githubUser": "AxelJosephPM",
+    "repoName": "LaunchCV",
+    "cardPath": "card.html"
+  },
+  "qr": {
+    "targetUrl": "",
+    "size": 300,
+    "errorCorrectionLevel": "M",
+    "format": "png"
+  },
+  "privacy": {
+    "showEmail": false,
+    "showPhone": false,
+    "showAddress": false,
+    "showPhoto": false,
+    "showDownloadButtons": true,
+    "showProjects": true,
+    "showExperience": true
+  },
+  "output": {
+    "basePath": "",
+    "openAfterGenerate": true
+  },
+  "ui": {
+    "theme": "dark",
+    "accentColor": "#4a90e2"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "language": "en",
+    "lastUpdated": "2026-06-07"
+  },
+  "personal": {
+    "firstName": "Pablo",
+    "lastName": "Codón Castellano",
+    "headline": "Aerospace Engineering Student",
+    "location": "Madrid, Comunidad de Madrid, España",
+    "email": "",
+    "phone": "",
+    "address": "",
+    "photo": "",
+    "linkedin": "",
+    "github": "",
+    "website": "",
+    "status": "Open to work"
+  },
+  "summary": "Aerospace Engineering student at Universidad Rey Juan Carlos, with experience in aerospace student associations, student representation, and technical projects related to avionics and power systems integration.",
+  "education": [
+    {
+      "id": "education_1",
+      "institution": "Universidad Rey Juan Carlos",
+      "degree": "Bachelor's Degree in Aerospace, Aeronautical and Astronautical/Space Engineering",
+      "field": "Aerospace Engineering",
+      "startDate": "September 2022",
+      "endDate": "May 2027",
+      "location": "Madrid, Spain",
+      "grade": ""
+    },
+    {
+      "id": "education_2",
+      "institution": "Universidad CEU San Pablo",
+      "degree": "Bachillerato",
+      "field": "Engineering Science",
+      "startDate": "September 2020",
+      "endDate": "May 2022",
+      "location": "Madrid, Spain",
+      "grade": ""
+    }
+  ],
+  "experience": [
+    {
+      "id": "experience_1",
+      "title": "Avionics and Power System Integration Team Leader",
+      "organization": "Cosmos Aerospace Association",
+      "type": "Part-time / Hybrid",
+      "location": "Madrid, Spain",
+      "startDate": "September 2024",
+      "endDate": "Present",
+      "description": "Leader of the avionics and power systems integration team inside the S-ART student satellite project.",
+      "current": true
+    },
+    {
+      "id": "experience_2",
+      "title": "Vocal URJC",
+      "organization": "Asociación de Estudiantes de Aeronáutica y Espacio - AEAE",
+      "type": "Volunteer",
+      "location": "Spain",
+      "startDate": "March 2023",
+      "endDate": "Present",
+      "description": "URJC representative in the Asociación de Estudiantes de Aeronáutica y Espacio.",
+      "current": true
+    },
+    {
+      "id": "experience_3",
+      "title": "Student",
+      "organization": "Universidad Rey Juan Carlos",
+      "type": "Full-time",
+      "location": "Madrid, Spain",
+      "startDate": "September 2022",
+      "endDate": "Present",
+      "description": "",
+      "current": true
+    }
+  ],
+  "certifications": [
+    {
+      "id": "certifications_1",
+      "name": "Advanced English",
+      "issuer": "Cambridge English",
+      "date": "February 2022",
+      "credentialId": "",
+      "url": ""
+    }
+  ],
+  "languages": [
+    {
+      "id": "languages_1",
+      "language": "Spanish",
+      "level": "Native"
+    },
+    {
+      "id": "languages_2",
+      "language": "English",
+      "level": "C1 (Advanced)"
+    }
+  ],
+  "skills": [
+    "Aerospace Engineering",
+    "Avionics",
+    "Power Systems",
+    "Systems Engineering",
+    "Team Coordination",
+    "Student Representation",
+    "Technical Documentation",
+    "English"
+  ],
+  "projects": [],
+  "links": {
+    "linkedin": "",
+    "github": "",
+    "portfolio": "",
+    "other": []
+  }
+}

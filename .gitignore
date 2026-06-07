@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+release/
+*.log
+*.tmp
+output/Logs/
+.DS_Store
+Thumbs.db
+
+# docs/ is intentionally NOT ignored — GitHub Pages requires it to be committed.
+# output/ is also intentionally not ignored so generated files can be reviewed locally.
+backups/
